@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'genres#index'
   resources :subgenres
   resources :genres
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
