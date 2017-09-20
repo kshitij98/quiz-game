@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'leaderboard/index'
+
   get 'question/index'
   post 'question/start_quiz'
 

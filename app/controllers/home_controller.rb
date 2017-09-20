@@ -13,7 +13,6 @@ class HomeController < ApplicationController
   		else
   			@scores.push("Not attempted")
   		end
-  		# @list.push(temp)
   	end
   end
 end

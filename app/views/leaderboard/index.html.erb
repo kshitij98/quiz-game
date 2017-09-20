@@ -1,0 +1,34 @@
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>  
+  </li>
+<% end %>
+
+<h1>Leaderboard#index</h1>
+<p>Find me in app/views/leaderboard/index.html.erb</p>
+
+<% @index = 0 %>
+<% @genres.each do |genre| %>
+	<div class="genre">
+		<%= genre.name %>
+	</div>
+	<% arr = @subgenres.select{ |subgenre| subgenre.genre_id.to_i == genre.id.to_i } %>
+		<% arr.each do |subgenre| %>
+			<div class="subgenre">
+				<%= subgenre.name %>
+				<br />
+				<% @i = 0 %>
+				<% @leaderboards[@index].each do |scorer| %>
+					<%= @leaderboards_names[@index][@i] %>
+					<%= scorer.points %>
+					<br />
+					<% @i += 1 %>
+				<% end %>
+				<% @index += 1 %>
+			</div>
+		<% end %>
+<% end %>
