@@ -2,11 +2,19 @@
   <li>
   	<a href="/" class="home"> Home </a>
   </li>
+  <li>
+  	<a href="/leaderboard/index" class="leaderboard"> Leaderboard </a>
+  </li>
 
   <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+	  <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "logout") %>
   </li>
 </ul>
+
+<br />
+<br />
+<br />
+
 
 <h1>Home</h1>
 

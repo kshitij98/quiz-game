@@ -2,9 +2,12 @@
   <li>
   	<a href="/" class="home"> Home </a>
   </li>
+  <li>
+  	<a href="/leaderboard/index" class="leaderboard"> Leaderboard </a>
+  </li>
 
   <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+	  <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "logout") %>
   </li>
 </ul>
 
@@ -14,15 +17,34 @@
 	<div class="genre">
 		<%= genre.name %>
 	</div>
+
+	<br />
+	<hr />
+	<br />
+
 	<% @subgenres.each_with_index do |subgenre, index| %>
 		<% if subgenre.genre_id.to_i == genre.id.to_i %>
-			<div class="subgenre">
-				<%= subgenre.name %>
+			<div>
+				<div style="width: 100%; font-size: 18px; text-align: center">
+					<%= subgenre.name %>
+				</div>
 				<br />
+				<hr class="small" />
+				<br />
+				
 				<% @i = 0 %>
+				
+				<table style="width:100%">
+				  <tr>
+				    <th>Player</th>
+				    <th>Score</th> 
+				  </tr>
+
 				<% @leaderboards[index].each do |scorer| %>
-					<%= @leaderboards_names[index][@i] %>
-					<%= scorer.points %>
+					<tr>
+						<td> <%= @leaderboards_names[index][@i] %> </td>
+						<td> <%= scorer.points %> </td>
+					</tr>
 					<br />
 					<% @i += 1 %>
 				<% end %>

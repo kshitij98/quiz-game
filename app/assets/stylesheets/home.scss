@@ -22,12 +22,18 @@ hr {
 	border-radius: 3px;
 }
 
+.small {
+	font-weight: bold;
+	margin-top: -10px;
+	margin-bottom: -10px;
+	width: 80% !important;
+}
+
 
 .nav > li > a {
 	position: absolute;
-	right: 20px;
-	top: 15px;
-	font-size: 20px;
+	top: 16px;
+	font-size: 17px;
 	color: white;
 	text-decoration: none;
 }
@@ -36,9 +42,12 @@ hr {
 	list-style-type: none;
 	width: 100%;
 	margin: 0;
-	height: 30px;
+	height: 50px;
 	padding: 10px;
-	background-color: #3F51B5;
+	background-color: #0D47A1	;
+	box-sizing: border-box;
+	position: fixed;
+	top: 0;
 }
 
 h1 {
@@ -56,6 +65,14 @@ td {
 
 .home {
 	left: 20px !important;
+}
+
+.leaderboard {
+	left: 90px !important;
+}
+
+.logout {
+	right: 20px;
 }
 
 input[type="submit"] {
