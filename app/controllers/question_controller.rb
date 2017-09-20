@@ -11,7 +11,7 @@ class QuestionController < ApplicationController
   	@question_id = params[:question_id].to_i
 
   	if params[:continue_game]
-  		@last_state_of_user.subgenre_id
+  		@subgenre_id = @last_state_of_user.subgenre_id
   	end
   	@current_user
 
@@ -22,18 +22,20 @@ class QuestionController < ApplicationController
 			  :user_id => @current_user.id,
 			  :subgenre_id => params[:subgenre_id],
 			  :points => 0,
+			  :question_id => Question.where(subgenre_id: params[:subgenre_id]).take
 			)
 			@new_state.save
 			puts "New ID"
   		puts @new_state.id
   	elsif params[:continue_game] == "true"
-	  	
+  		puts @question_id = @last_state_of_user.question_id
 	  	# Continue game or submit answer
 
   	else
   		if params[:answer].to_s == Question.find(params[:question_id]).answer
   			puts "Correct Answer"
   			@last_state_of_user.points += 100
+  			@last_state_of_user.question_id = params[:question_id]
   			@last_state_of_user.save
   		else
   			puts "Wrong Answer"  			
