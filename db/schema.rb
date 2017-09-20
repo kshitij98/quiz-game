@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920020937) do
+ActiveRecord::Schema.define(version: 20170920022711) do
 
   create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "name"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170920020937) do
   create_table "scores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "subgenre_id"
-    t.integer "score"
+    t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subgenre_id"], name: "index_scores_on_subgenre_id"
@@ -77,12 +77,15 @@ ActiveRecord::Schema.define(version: 20170920020937) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "is_admin", default: false
+    t.bigint "score_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["score_id"], name: "index_users_on_score_id"
   end
 
   add_foreign_key "questions", "subgenres"
   add_foreign_key "scores", "subgenres"
   add_foreign_key "scores", "users"
   add_foreign_key "subgenres", "genres"
+  add_foreign_key "users", "scores"
 end

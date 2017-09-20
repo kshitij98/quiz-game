@@ -3,7 +3,7 @@ class CreateScores < ActiveRecord::Migration[5.1]
     create_table :scores do |t|
       t.references :user, foreign_key: true
       t.references :subgenre, foreign_key: true
-      t.integer :score
+      t.integer :points
 
       t.timestamps
     end
