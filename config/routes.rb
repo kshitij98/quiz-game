@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'question/index'
+  post 'question/start_quiz'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   resources :subgenres

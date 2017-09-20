@@ -1,0 +1,17 @@
+<h1>Question#start_quiz</h1>
+<p>Find me in app/views/question/index.html.erb</p>
+
+
+<%= @question.question %>
+
+<form action="/question/start_quiz" method="post">
+	<li><input type="checkbox" name="answer[]" value="1" /> <%= @question.option1 %> </li>
+	<li><input type="checkbox" name="answer[]" value="2" /> <%= @question.option2 %> </li>
+	<li><input type="checkbox" name="answer[]" value="3" /> <%= @question.option3 %> </li>
+	<li><input type="checkbox" name="answer[]" value="4" /> <%= @question.option4 %> </li>
+	<input type="hidden" name="start_game" value="false" />
+	<input type="hidden" name="cotinue_game" value="false" />
+	<input type="hidden" name="question_id" value=<%= @question.id %> />
+	<input type="hidden" name="subgenre_id" value=<%= @subgenre_id %> />
+	<input type="submit" value="Submit" />
+</form>
