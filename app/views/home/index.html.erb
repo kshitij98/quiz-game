@@ -11,6 +11,12 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
+<form action="/question/start_quiz" method="post">
+	<input type="hidden" name="continue_game" value="true" />
+	<input type="submit" value="Continue Game">
+</form>
+
+<% @index = 0 %>
 <% @genres.each do |genre| %>
 	<div class="genre">
 		<%= genre.name %>
@@ -19,6 +25,8 @@
 		<% arr.each do |subgenre| %>
 			<div class="subgenre">
 				<%= subgenre.name %>
+				<%= @scores[@index] %>
+				<% @index += 1 %>
 				<form action="/question/start_quiz" method="post">
 					<input type="hidden" name="subgenre_id" value="<%= subgenre.id %>" />
 					<input type="hidden" name="start_game" value="true" />

@@ -4,6 +4,15 @@
 
 <%= @question.question %>
 
+<br />
+	<img src="<%= @question.image %>" class="question-image"/>
+
+	<% if @question.audio != "/audios/original/missing.png" %>
+		<audio class="question-audio" preload="auto" controls="controls"> 
+	  	<source src="<%= @question.audio %>" />
+		</audio>
+	<% end %>
+
 <form action="/question/start_quiz" method="post">
 	<li><input type="checkbox" name="answer[]" value="1" /> <%= @question.option1 %> </li>
 	<li><input type="checkbox" name="answer[]" value="2" /> <%= @question.option2 %> </li>

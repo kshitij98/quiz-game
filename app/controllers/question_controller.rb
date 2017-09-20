@@ -6,19 +6,17 @@ class QuestionController < ApplicationController
   end
 
   def start_quiz
+		@last_state_of_user = Score.order(created_at: :desc).where(user_id: current_user.id).take
   	@subgenre_id = params[:subgenre_id]
-  	@current_user
-  	@question = Question.where(subgenre_id: params[:subgenre_id]).offset(params[:question_id].to_i).take
-  	puts "Question"
-  	
-  	# End Quiz
-  	if not @question
-  		redirect_to root_path
+  	@question_id = params[:question_id].to_i
+
+  	if params[:continue_game]
+  		@last_state_of_user.subgenre_id
   	end
+  	@current_user
 
   	# puts @question.id
 
-		@last_state_of_user = Score.order(created_at: :desc).where(user_id: current_user.id).take
   	if params[:start_game] == "true"
 			@new_state = Score.create(
 			  :user_id => @current_user.id,
@@ -48,6 +46,14 @@ class QuestionController < ApplicationController
 
   	end
 		
+  	@question = Question.where(subgenre_id: @subgenre_id).offset(@question_id).take
+  	puts "Question"  	
+
+
+  	# End Quiz
+  	if not @question
+  		redirect_to root_path
+  	end
 
 		# if @last_state_of_user
 		# end
