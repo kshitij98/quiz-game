@@ -1,33 +1,32 @@
-<% if user_signed_in? %>
+<ul class="nav">
+  <li>
+  	<a href="/" class="home"> Home </a>
+  </li>
+
   <li>
   <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
   </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
+</ul>
 
 <h1>Leaderboard</h1>
 
-<% @index = 0 %>
 <% @genres.each do |genre| %>
 	<div class="genre">
 		<%= genre.name %>
 	</div>
-	<% arr = @subgenres.select{ |subgenre| subgenre.genre_id.to_i == genre.id.to_i } %>
-		<% arr.each do |subgenre| %>
+	<% @subgenres.each_with_index do |subgenre, index| %>
+		<% if subgenre.genre_id.to_i == genre.id.to_i %>
 			<div class="subgenre">
 				<%= subgenre.name %>
 				<br />
 				<% @i = 0 %>
-				<% @leaderboards[@index].each do |scorer| %>
-					<%= @leaderboards_names[@index][@i] %>
+				<% @leaderboards[index].each do |scorer| %>
+					<%= @leaderboards_names[index][@i] %>
 					<%= scorer.points %>
 					<br />
 					<% @i += 1 %>
 				<% end %>
-				<% @index += 1 %>
 			</div>
 		<% end %>
+	<% end %>
 <% end %>

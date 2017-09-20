@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.field > input {
+	border-radius: 5px;
+	height: 20px;
+	border: 1px solid #E0E0E0;
+	background-color: #E0E0E0;
+	padding: 3px 10px;
+	width: 180px;
+}
+
+.actions > input {
+	width: 200px;
+}

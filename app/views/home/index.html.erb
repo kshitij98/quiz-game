@@ -40,13 +40,12 @@
 	    <th>-</th>
 	  </tr>
 
-	<% arr = @subgenres.select{ |subgenre| subgenre.genre_id.to_i == genre.id.to_i } %>
-		<% arr.each do |subgenre| %>
+	<% @subgenres.each_with_index do |subgenre, index| %>
+		<% if subgenre.genre_id.to_i == genre.id.to_i %>
 	  	<tr>
 			<div class="subgenre">
 				<td> <%= subgenre.name %> </td>
-				<td> <%= @scores[@index] %> </td>
-				<% @index += 1 %>
+				<td> <%= @scores[index] %> </td>
 				<td>
 				<form action="/question/start_quiz" method="post">
 					<input type="hidden" name="subgenre_id" value="<%= subgenre.id %>" />
@@ -58,6 +57,7 @@
 			</div>
 			</tr>
 		<% end %>
+	<% end %>
 	</table>
 	<br />
 	<br />

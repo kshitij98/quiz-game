@@ -50,6 +50,8 @@ class QuestionController < ApplicationController
   			@last_state_of_user.save
   		else
   			puts "Wrong Answer"  			
+        @last_state_of_user.question_id = params[:question_id]
+        @last_state_of_user.save
   		end
 
 		 	# Submit answer

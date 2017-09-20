@@ -11,3 +11,28 @@
 .question {
 	font-size: 30px;
 }
+
+form > li {
+	font-size: 16px;
+	margin: 15px;
+	list-style-type: none;
+	cursor: pointer;
+}
+
+input[type="checkbox"] {
+	visibility: hidden;
+}
+
+label + input + div {
+	color: #E0E0E0;
+}
+
+input[type="checkbox"]:checked + div {
+	color: black;
+	padding-left: 10px;
+}
+
+input + div {
+	cursor: pointer;
+	transition: 1s ease all;
+}
