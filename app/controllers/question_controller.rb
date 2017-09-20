@@ -22,7 +22,9 @@ class QuestionController < ApplicationController
 			  :user_id => @current_user.id,
 			  :subgenre_id => params[:subgenre_id],
 			  :points => 0,
-			  :question_id => Question.where(subgenre_id: params[:subgenre_id]).take
+			  :question_id => Question.where(subgenre_id: params[:subgenre_id]).take,
+				:skip_question => false,
+				:double_points => false,
 			)
 			@new_state.save
 			puts "New ID"
@@ -34,6 +36,15 @@ class QuestionController < ApplicationController
   	else
   		if params[:answer].to_s == Question.find(params[:question_id]).answer
   			puts "Correct Answer"
+  			if @last_state_of_user.double_points == false and params[:double_points] == "true"
+	  			@last_state_of_user.double_points = true
+  				@last_state_of_user.points += 100
+  			end
+  			@last_state_of_user.points += 100
+  			@last_state_of_user.question_id = params[:question_id]
+  			@last_state_of_user.save
+  		elsif @last_state_of_user.skip_question == false and params[:skip_question] == "true"
+  			@last_state_of_user.skip_question = true
   			@last_state_of_user.points += 100
   			@last_state_of_user.question_id = params[:question_id]
   			@last_state_of_user.save
