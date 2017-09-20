@@ -54,6 +54,10 @@ td {
 	text-align: center;
 }
 
+.home {
+	left: 20px !important;
+}
+
 input[type="submit"] {
 	border-radius: 5px;
 	background-color: #2196F3;
@@ -63,4 +67,9 @@ input[type="submit"] {
 	box-shadow: none;
 	border: none;
 	font-size: 15px;
+	cursor: pointer;
+}
+
+a:hover {
+	background-color: rgba(0, 0, 0, 0) !important;
 }

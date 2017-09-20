@@ -1,3 +1,13 @@
 // Place all the styles related to the question controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.question-image {
+	height: 300px;
+	position: absolute;
+	right: 30px;;
+}
+
+.question {
+	font-size: 30px;
+}

@@ -1,8 +1,9 @@
-<h1>Question#start_quiz</h1>
-<p>Find me in app/views/question/index.html.erb</p>
+<h1>Question</h1>
 
-
+<div style="padding: 30px;">
+<div class="question">
 <%= @question.question %>
+</div>
 
 <br />
 	<img src="<%= @question.image %>" class="question-image"/>
@@ -24,5 +25,7 @@
 	<input type="hidden" name="subgenre_id" value=<%= @subgenre_id %> />
 	<li><input type="radio" name="skip_question" value="true" /> Skip Question </li>
 	<li><input type="radio" name="double_points" value="true" /> Double Points </li>
+	<br />
 	<input type="submit" value="Submit" />
 </form>
+</div>
