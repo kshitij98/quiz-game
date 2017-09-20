@@ -10,13 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919180128) do
+ActiveRecord::Schema.define(version: 20170920020937) do
 
   create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "question"
+    t.text "option1"
+    t.text "option2"
+    t.text "option3"
+    t.text "option4"
+    t.text "answer"
+    t.bigint "subgenre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.string "audio_file_name"
+    t.string "audio_content_type"
+    t.integer "audio_file_size"
+    t.datetime "audio_updated_at"
+    t.index ["subgenre_id"], name: "index_questions_on_subgenre_id"
+  end
+
+  create_table "scores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "subgenre_id"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subgenre_id"], name: "index_scores_on_subgenre_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
   create_table "subgenres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,5 +81,8 @@ ActiveRecord::Schema.define(version: 20170919180128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "questions", "subgenres"
+  add_foreign_key "scores", "subgenres"
+  add_foreign_key "scores", "users"
   add_foreign_key "subgenres", "genres"
 end
