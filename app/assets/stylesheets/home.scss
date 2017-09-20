@@ -3,9 +3,64 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .genre {
-	color: red;
+	color: black;
+	width: 100%;
+	text-align: center;
+	font-size: 2em;
+
+}
+
+body {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+hr {
+	width: 100%;
+	color: green;
+	border: solid 1.5px rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+}
+
+
+.nav > li > a {
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+}
+
+.nav {
+	list-style-type: none;
+	width: 100%;
+	margin: 0;
+	height: 30px;
+	padding: 10px;
+	background-color: #3F51B5;
+}
+
+h1 {
+	text-align: center;
+	font-size: 35px;
 }
 
 .subgenre {
 	color: green;
+}
+
+td {
+	text-align: center;
+}
+
+input[type="submit"] {
+	border-radius: 5px;
+	background-color: #2196F3;
+	height: 30px;
+	width: 150px;
+	color: white;
+	box-shadow: none;
+	border: none;
+	font-size: 15px;
 }

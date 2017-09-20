@@ -1,38 +1,62 @@
-<% if user_signed_in? %>
+<ul class="nav">
   <li>
   <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
   </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
+</ul>
 
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Home</h1>
 
+<div style="text-align: center;">
 <form action="/question/start_quiz" method="post">
 	<input type="hidden" name="continue_game" value="true" />
 	<input type="submit" value="Continue Game">
 </form>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
 
 <% @index = 0 %>
 <% @genres.each do |genre| %>
 	<div class="genre">
 		<%= genre.name %>
 	</div>
+
+	<br />
+	<hr />
+	<br />
+
+	<table style="width:100%">
+	  <tr>
+	    <th>Subgenre</th>
+	    <th>High Score</th> 
+	    <th>-</th>
+	  </tr>
+
 	<% arr = @subgenres.select{ |subgenre| subgenre.genre_id.to_i == genre.id.to_i } %>
 		<% arr.each do |subgenre| %>
+	  	<tr>
 			<div class="subgenre">
-				<%= subgenre.name %>
-				<%= @scores[@index] %>
+				<td> <%= subgenre.name %> </td>
+				<td> <%= @scores[@index] %> </td>
 				<% @index += 1 %>
+				<td>
 				<form action="/question/start_quiz" method="post">
 					<input type="hidden" name="subgenre_id" value="<%= subgenre.id %>" />
 					<input type="hidden" name="start_game" value="true" />
 					<input type="hidden" name="question_id" value="0" />
 					<input type="submit" value="Start Quiz">
 				</form>
+				</td>
 			</div>
+			</tr>
 		<% end %>
+	</table>
+	<br />
+	<br />
+	<br />
+	<br />
 <% end %>
