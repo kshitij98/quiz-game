@@ -26,3 +26,12 @@
 .actions > input {
 	width: 200px;
 }
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: black;
+	background-color: rgba(0, 0, 0, 0);
+}

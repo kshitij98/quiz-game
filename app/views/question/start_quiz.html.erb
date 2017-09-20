@@ -15,10 +15,10 @@
 	<% end %>
 
 <form action="/question/start_quiz" method="post">
-	<li><label><input type="checkbox" name="answer[]" value="1" /> <div><%= @question.option1 %></div> </label></li>
-	<li><label><input type="checkbox" name="answer[]" value="2" /> <div><%= @question.option2 %></div> </label></li>
-	<li><label><input type="checkbox" name="answer[]" value="3" /> <div><%= @question.option3 %></div> </label></li>
-	<li><label><input type="checkbox" name="answer[]" value="4" /> <div><%= @question.option4 %></div> </label></li>
+	<li><label><input type="checkbox" class="option" name="answer[]" value="1" /> <div><%= @question.option1 %></div> </label></li>
+	<li><label><input type="checkbox" class="option" name="answer[]" value="2" /> <div><%= @question.option2 %></div> </label></li>
+	<li><label><input type="checkbox" class="option" name="answer[]" value="3" /> <div><%= @question.option3 %></div> </label></li>
+	<li><label><input type="checkbox" class="option" name="answer[]" value="4" /> <div><%= @question.option4 %></div> </label></li>
 	<input type="hidden" name="start_game" value="false" />
 	<input type="hidden" name="cotinue_game" value="false" />
 	<input type="hidden" name="question_id" value=<%= @question.id %> />

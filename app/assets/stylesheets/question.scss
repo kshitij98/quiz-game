@@ -19,7 +19,7 @@ form > li {
 	cursor: pointer;
 }
 
-input[type="checkbox"] {
+.option {
 	visibility: hidden;
 }
 
@@ -27,12 +27,12 @@ label + input + div {
 	color: #E0E0E0;
 }
 
-input[type="checkbox"]:checked + div {
+.option:checked + div {
 	color: black;
 	padding-left: 10px;
 }
 
-input + div {
+.option + div {
 	cursor: pointer;
 	transition: 1s ease all;
 }
